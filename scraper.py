@@ -104,13 +104,24 @@ for pages in itertools.count(1):
     n=str(pages)
     html = urllib2.urlopen(url.format(n))
     soup = BeautifulSoup(html, 'lxml')
+<<<<<<< HEAD
     pageLinks = soup.findAll('a', href=True)
     more = soup.find('tfoot').find_all('a')[-1].text
+=======
+
+    pageLinks = soup.findAll('a', href=True)
+    more = soup.find('tfoot').find_all('a')[-1].text
+
+>>>>>>> b0bdbf0f58146c771a8121c1763bfa2b1ac1b4fc
     for pageLink in pageLinks:
         href = pageLink['href']
         if 'CSV' in href:
             fileUrl = "http://data.hounslow.gov.uk"+href
+<<<<<<< HEAD
             title = pageLink['title'].split('500')[-1].strip().replace('_', '')
+=======
+            title = pageLink['title'].split('500')[-1].strip()
+>>>>>>> b0bdbf0f58146c771a8121c1763bfa2b1ac1b4fc
             csvYr = title.split(' ')[1]
             csvMth = title.split(' ')[0][:3]
             if '201' in csvMth:
@@ -125,7 +136,11 @@ for pages in itertools.count(1):
             csvMth = convert_mth_strings(csvMth.upper())
             todays_date = str(datetime.now())
             data.append([csvYr, csvMth, fileUrl])
+<<<<<<< HEAD
     if '2' in more:
+=======
+    if '1' in more:
+>>>>>>> b0bdbf0f58146c771a8121c1763bfa2b1ac1b4fc
         break
 
 #### STORE DATA 1.0
@@ -149,4 +164,7 @@ if errors > 0:
 
 
 #### EOF
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0bdbf0f58146c771a8121c1763bfa2b1ac1b4fc
